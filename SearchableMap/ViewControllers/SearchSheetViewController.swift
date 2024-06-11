@@ -145,8 +145,10 @@ class SearchSheetViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor),
         ])
+
+        view.keyboardLayoutGuide.usesBottomSafeArea = false
     }
 
     private func layoutContentUnavailableView() {
@@ -227,9 +229,12 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isRecentsShowing {
+            searchBar.becomeFirstResponder()
+
             // Insert selected recent search to search bar
             let recentSearchText = RecentSearchesService.shared.recentSearches[indexPath.row]
-            searchBar.searchTextField.insertText(recentSearchText)
+            searchBar.text = recentSearchText
+            searchBar.delegate?.searchBar?(searchBar, textDidChange: recentSearchText)
 
             // Add the recent search again to put it on top
             RecentSearchesService.shared.add(recentSearchText)
