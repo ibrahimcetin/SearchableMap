@@ -15,6 +15,7 @@
 		0F30F6452C1110EB00F0A631 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0F30F6442C1110EB00F0A631 /* Base */; };
 		0F30F64D2C1113EE00F0A631 /* SearchSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F30F64C2C1113EE00F0A631 /* SearchSheetViewController.swift */; };
 		0F3376A32C15E9D50044A8A8 /* SearchCompletionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3376A22C15E9D50044A8A8 /* SearchCompletionTableViewCell.swift */; };
+		0F611BDF2C16F506003A5023 /* RecentSearchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F611BDE2C16F506003A5023 /* RecentSearchesService.swift */; };
 		0FF800432C130F8F006DAA49 /* UIFont+withWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF800422C130F8F006DAA49 /* UIFont+withWeight.swift */; };
 		0FF800472C1351C2006DAA49 /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF800462C1351C2006DAA49 /* LocalSearchService.swift */; };
 		0FF800492C139DB4006DAA49 /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF800482C139DB4006DAA49 /* CLLocationCoordinate2D+Equatable.swift */; };
@@ -31,6 +32,7 @@
 		0F30F6462C1110EB00F0A631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F30F64C2C1113EE00F0A631 /* SearchSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheetViewController.swift; sourceTree = "<group>"; };
 		0F3376A22C15E9D50044A8A8 /* SearchCompletionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompletionTableViewCell.swift; sourceTree = "<group>"; };
+		0F611BDE2C16F506003A5023 /* RecentSearchesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchesService.swift; sourceTree = "<group>"; };
 		0FF800422C130F8F006DAA49 /* UIFont+withWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+withWeight.swift"; sourceTree = "<group>"; };
 		0FF800462C1351C2006DAA49 /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
 		0FF800482C139DB4006DAA49 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0FF800462C1351C2006DAA49 /* LocalSearchService.swift */,
+				0F611BDE2C16F506003A5023 /* RecentSearchesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F611BDF2C16F506003A5023 /* RecentSearchesService.swift in Sources */,
 				0F30F64D2C1113EE00F0A631 /* SearchSheetViewController.swift in Sources */,
 				0F3376A32C15E9D50044A8A8 /* SearchCompletionTableViewCell.swift in Sources */,
 				0F30F63D2C1110E900F0A631 /* MainViewController.swift in Sources */,

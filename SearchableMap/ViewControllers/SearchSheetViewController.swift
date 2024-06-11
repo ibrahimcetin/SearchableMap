@@ -30,18 +30,15 @@ class SearchSheetViewController: UIViewController {
         tableView.sectionHeaderTopPadding = 0
 
         // Register reuseable cell to tableView
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RecentSearchCell")
         tableView.register(SearchCompletionTableViewCell.self, forCellReuseIdentifier: SearchCompletionTableViewCell.identifier)
 
         return tableView
     }()
+
+    /// If searchBar text is empty or nil, recents will show on tableView
     private var isRecentsShowing: Bool {
-        return if let text = searchBar.text {
-            // If text is empty, recents will show
-            text.isEmpty
-        } else {
-            // If text is nil, recents will show
-            false
-        }
+        searchBar.text?.isEmpty ?? false
     }
 
     let searchBar: UISearchBar = {
@@ -79,9 +76,9 @@ class SearchSheetViewController: UIViewController {
 
         localSearchService.$searchCompletionResults
             .receive(on: OperationQueue.main)
-            .sink { [weak self] completions in
+            .sink { [weak self] searchCompletions in
                 guard let self else { return }
-                self.localSearchCompletionResults = completions
+                self.localSearchCompletionResults = searchCompletions
             }
             .store(in: &subscriptions)
     }
@@ -166,19 +163,23 @@ class SearchSheetViewController: UIViewController {
 
 extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        localSearchCompletionResults.count
+        isRecentsShowing ? RecentSearchesService.shared.recentSearches.count : localSearchCompletionResults.count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = isRecentsShowing ? "Recents" : "Search Results"
+        label.text = isRecentsShowing ? "Recent Searches" : "Search Results"
         label.font = .preferredFont(forTextStyle: .callout, compatibleWith: UITraitCollection(legibilityWeight: .bold))
         label.textColor = .secondaryLabel
 
         let clearButton = UIButton(type: .system)
         clearButton.setTitle("Clear", for: .normal)
-        //clearButton.addAction(  , for: .touchUpInside)
         clearButton.alpha = isRecentsShowing ? 1 : 0
+
+        clearButton.addAction(UIAction(handler: { _ in
+            RecentSearchesService.shared.clear()
+            tableView.reloadData()
+        }) , for: .touchUpInside)
 
         let stackView = UIStackView(arrangedSubviews: [label, clearButton])
         stackView.axis = .horizontal
@@ -191,23 +192,66 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Dequeue a cell from the pool
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchCompletionTableViewCell.identifier, for: indexPath) as! SearchCompletionTableViewCell
+        let cell: UITableViewCell
 
-        // Get search result for the indexPath
-        let searchCompletion = localSearchCompletionResults[indexPath.row]
+        if isRecentsShowing {
+            cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath)
 
-        // Update the content
-        cell.updateContent(searchCompletion: searchCompletion)
+            let recentSearch = RecentSearchesService.shared.recentSearches[indexPath.row]
+
+            var configuration = cell.defaultContentConfiguration()
+            configuration.text = recentSearch
+
+            cell.contentConfiguration = configuration
+        } else {
+            // Dequeue a cell from the pool
+            let searchCompletionCell = tableView.dequeueReusableCell(withIdentifier: SearchCompletionTableViewCell.identifier, for: indexPath) as! SearchCompletionTableViewCell
+
+            // Get search result for the indexPath
+            let searchCompletion = localSearchCompletionResults[indexPath.row]
+
+            // Update the content
+            searchCompletionCell.updateContent(searchCompletion: searchCompletion)
+
+            cell = searchCompletionCell
+        }
+
+        cell.backgroundColor = .clear
+
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = .gray.withAlphaComponent(0.2)
+        cell.selectedBackgroundView = selectedBackgroundView
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Set selected row
-        selectedSearchCompletion = localSearchCompletionResults[indexPath.row]
+        if isRecentsShowing {
+            // Insert selected recent search to search bar
+            let recentSearchText = RecentSearchesService.shared.recentSearches[indexPath.row]
+            searchBar.searchTextField.insertText(recentSearchText)
+
+            // Make selected search recent
+            RecentSearchesService.shared.updateRecent(recentSearchText)
+        } else {
+            // Set selected search result
+            selectedSearchCompletion = localSearchCompletionResults[indexPath.row]
+        }
 
         // Deselect the row immediatly
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // If recent searches are showing, then user can edit the row
+        isRecentsShowing
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RecentSearchesService.shared.delete(at: indexPath.row)
+        }
+
+        tableView.reloadData()
     }
 }

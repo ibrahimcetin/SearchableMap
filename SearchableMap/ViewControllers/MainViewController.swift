@@ -399,7 +399,16 @@ extension MainViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // When search button clicked start the coordinate search
+        // and add the annotations on mapView
         willAddAnnotations = true
+
+        // Save the search text to recent searches
+        if let searchText = searchBar.text {
+            RecentSearchesService.shared.add(searchText)
+        }
+
+
         searchBar.resignFirstResponder()
     }
 }

@@ -30,12 +30,6 @@ class SearchCompletionTableViewCell: UITableViewCell {
 
         // Update cell properties
         self.contentConfiguration = configuration
-
-        self.backgroundColor = .clear
-
-        let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = .gray.withAlphaComponent(0.2)
-        self.selectedBackgroundView = selectedBackgroundView
     }
 
     private func createAttributedText(text: String, font: UIFont, ranges: [NSValue]) -> NSAttributedString {
