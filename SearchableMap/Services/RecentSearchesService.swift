@@ -26,8 +26,11 @@ class RecentSearchesService {
     }
 
     func add(_ text: String) {
-        // Recent searches should not contain the same text
-        guard !recentSearches.contains(text) else { return }
+        // If the text is already in recent searches
+        // remove it and it will be inserted index 0
+        if let index = recentSearches.firstIndex(of: text) {
+            recentSearches.remove(at: index)
+        }
 
         if recentSearches.count >= maxSearchCount {
             recentSearches.removeLast()
@@ -44,14 +47,6 @@ class RecentSearchesService {
 
     func clear() {
         recentSearches = []
-    }
-
-    func updateRecent(_ text: String) {
-        // Make sure given text is in the recent searches
-        guard let index = recentSearches.firstIndex(of: text) else { return }
-
-        delete(at: index)
-        add(text)
     }
 
     private func save() {

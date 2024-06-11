@@ -231,8 +231,8 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
             let recentSearchText = RecentSearchesService.shared.recentSearches[indexPath.row]
             searchBar.searchTextField.insertText(recentSearchText)
 
-            // Make selected search recent
-            RecentSearchesService.shared.updateRecent(recentSearchText)
+            // Add the recent search again to put it on top
+            RecentSearchesService.shared.add(recentSearchText)
         } else {
             // Set selected search result
             selectedSearchCompletion = localSearchCompletionResults[indexPath.row]
