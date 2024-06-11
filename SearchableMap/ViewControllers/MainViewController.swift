@@ -399,6 +399,8 @@ extension MainViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = true
+
         // When search button clicked start the coordinate search
         // and add the annotations on mapView
         willAddAnnotations = true
