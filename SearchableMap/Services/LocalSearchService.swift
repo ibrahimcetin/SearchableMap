@@ -37,6 +37,9 @@ class LocalSearchService: NSObject {
     private var lastSearchRegionUpdate: Date?
     private let searchRegionUpdateInterval: Double = 3.0
 
+    /// Initialize a new search completion based on given query.
+    ///
+    /// This method returns immediatly. To get results add subscriber to ``LocalSearchService/searchCompletionResults`` publisher.
     func searchCompletion(for queryString: String) {
         if queryString.isEmpty {
             // Cancel if any search is in progress
