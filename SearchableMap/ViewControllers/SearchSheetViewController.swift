@@ -182,7 +182,8 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
 
         clearButton.addAction(UIAction(handler: { _ in
             RecentSearchesService.shared.clear()
-            tableView.reloadData()
+
+            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }) , for: .touchUpInside)
 
         let stackView = UIStackView(arrangedSubviews: [label, clearButton])
