@@ -176,7 +176,7 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
 
         let clearButton = UIButton(type: .system)
         clearButton.setTitle(String(localized: "Clear", comment: "Table view's clear recent searches button text"), for: .normal)
-        clearButton.alpha = isRecentsShowing ? 1 : 0
+        clearButton.alpha = isRecentsShowing && !RecentSearchesService.shared.isEmpty ? 1 : 0
         clearButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         clearButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 

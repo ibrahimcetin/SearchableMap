@@ -11,14 +11,19 @@ class RecentSearchesService {
     static let shared = RecentSearchesService()
 
     private let userDefaults: UserDefaults
+    private let key = "RecentSearches"
+
     private(set) var recentSearches: [String] {
         didSet {
             save()
         }
     }
 
-    private let key = "RecentSearches"
     var maxSearchCount: Int = 10
+
+    var isEmpty: Bool {
+        recentSearches.isEmpty
+    }
 
     init() {
         self.userDefaults = UserDefaults()
