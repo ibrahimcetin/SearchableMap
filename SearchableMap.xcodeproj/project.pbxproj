@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0505882CD63B0600AFC681 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0F0505872CD63B0600AFC681 /* Localizable.xcstrings */; };
 		0F30F6392C1110E900F0A631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F30F6382C1110E900F0A631 /* AppDelegate.swift */; };
 		0F30F63B2C1110E900F0A631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F30F63A2C1110E900F0A631 /* SceneDelegate.swift */; };
 		0F30F63D2C1110E900F0A631 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F30F63C2C1110E900F0A631 /* MainViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0505872CD63B0600AFC681 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0F30F6352C1110E900F0A631 /* SearchableMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchableMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F30F6382C1110E900F0A631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F30F63A2C1110E900F0A631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				0F30F63E2C1110E900F0A631 /* Main.storyboard */,
 				0F30F6412C1110EB00F0A631 /* Assets.xcassets */,
 				0F30F6432C1110EB00F0A631 /* LaunchScreen.storyboard */,
+				0F0505872CD63B0600AFC681 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 0F30F62C2C1110E900F0A631;
 			productRefGroup = 0F30F6362C1110E900F0A631 /* Products */;
@@ -193,6 +197,7 @@
 			files = (
 				0F30F6422C1110EB00F0A631 /* Assets.xcassets in Resources */,
 				0F30F6452C1110EB00F0A631 /* Base in Resources */,
+				0F0505882CD63B0600AFC681 /* Localizable.xcstrings in Resources */,
 				0F30F6402C1110E900F0A631 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +302,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -353,6 +359,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

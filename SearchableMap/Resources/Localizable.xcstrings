@@ -1,0 +1,128 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "a gas station" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benzinlik"
+          }
+        }
+      }
+    },
+    "a museum" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müze"
+          }
+        }
+      }
+    },
+    "a park" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Park"
+          }
+        }
+      }
+    },
+    "a restaurant" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restoran"
+          }
+        }
+      }
+    },
+    "a zoo" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayvanat bahçesi"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "comment" : "Table view's clear recent searches button text",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "comment" : "Alert dismiss action",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Recent Searches" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmiş Aramalar"
+          }
+        }
+      }
+    },
+    "Search %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ara"
+          }
+        }
+      }
+    },
+    "Search Results" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arama Sonuçları"
+          }
+        }
+      }
+    },
+    "Search this area" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu alanı ara"
+          }
+        }
+      }
+    },
+    "Something Went Wrong" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir Şeyler Ters Gitti"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

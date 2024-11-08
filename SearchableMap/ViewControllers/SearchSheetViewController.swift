@@ -115,7 +115,7 @@ class SearchSheetViewController: UIViewController {
     }
 
     private func configureSearchBarPlaceholder() {
-        let placeholderTexts = ["a restaurant", "a gas station", "a zoo", "a park", "a museum"]
+        let placeholderTexts: [LocalizedStringResource] = ["a restaurant", "a gas station", "a zoo", "a park", "a museum"]
 
         var iterator = placeholderTexts.makeIterator()
         let timer = Timer(timeInterval: 3, repeats: true) { timer in
@@ -123,7 +123,7 @@ class SearchSheetViewController: UIViewController {
 
             if let text = iterator.next() {
                 UIView.transition(with: self.searchBar, duration: 0.3, options: .transitionCrossDissolve) {
-                    self.searchBar.placeholder = "Search \(text)"
+                    self.searchBar.placeholder = String(localized: "Search \(text)")
                 }
             } else {
                 iterator = placeholderTexts.makeIterator()
@@ -170,12 +170,12 @@ extension SearchSheetViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = isRecentsShowing ? "Recent Searches" : "Search Results"
+        label.text = isRecentsShowing ? String(localized: "Recent Searches") : String(localized: "Search Results")
         label.font = .preferredFont(forTextStyle: .callout, compatibleWith: UITraitCollection(legibilityWeight: .bold))
         label.textColor = .secondaryLabel
 
         let clearButton = UIButton(type: .system)
-        clearButton.setTitle("Clear", for: .normal)
+        clearButton.setTitle(String(localized: "Clear", comment: "Table view's clear recent searches button text"), for: .normal)
         clearButton.alpha = isRecentsShowing ? 1 : 0
 
         clearButton.addAction(UIAction(handler: { _ in

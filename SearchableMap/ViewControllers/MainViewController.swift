@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
         let materialView = UIVisualEffectView(effect: blurView)
         button.configuration?.background.backgroundColor = .tertiarySystemBackground
         // Set the title
-        button.setTitle("Search this area", for: .normal)
+        button.setTitle(String(localized: "Search this area"), for: .normal)
         // Hide the button
         button.alpha = 0
 
@@ -329,7 +329,7 @@ class MainViewController: UIViewController {
     }
 
     private func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Something Went Wrong", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: String(localized: "Something Went Wrong"), message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localized: "Ok", comment: "Alert dismiss action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -409,7 +409,6 @@ extension MainViewController: UISearchBarDelegate {
         if let searchText = searchBar.text {
             RecentSearchesService.shared.add(searchText)
         }
-
 
         searchBar.resignFirstResponder()
     }
