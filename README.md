@@ -8,3 +8,6 @@ SearchableMap is an iOS application that allows users to search for points of in
 - **Annotations**: Displays search results as annotations on the map.
 - **Look Around**: Allows users to view a Look Around scene for selected locations.
 - **Search This Area**: Allows users to search for points of interest within the current map view.
+
+# Screen Record
+https://github.com/user-attachments/assets/4bd17e7a-d2b2-4314-a25a-b2e710276b13
